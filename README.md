@@ -38,15 +38,13 @@ for more info see
 
 
 ## Config Logging in Python Application
-config
+import and config
 
 ```
 import logging
 from bioconnect_lib.log.log_handler import BioconnectLogHandler
 
-
 logging.basicConfig(level="INFO", handlers=[BioconnectLogHandler()])
-
 ```
 
 use the logging as usual
@@ -68,6 +66,7 @@ except Exception as e:
 
 ## Config Logging in Django Application
 only file to change is: settings.py
+
 add import for the BioConnect logging handler 
 
 ```
@@ -102,7 +101,7 @@ LOGGING = {
 }
 ```
 
-use the logging as usual with some easy method
+use the logging as usual with some convenient methods
 
 ```
 logger = logging.getLogger(__name__)
@@ -138,12 +137,12 @@ try:
     logger.info(f'response: {response}')
 except Exception as e:
     logger.error("Failed to authorize", exc_info=True)
-
 ```
 
 ## Config Ranger Authorization in Django Application View
 for Google Cloud Storage,
 add import and create a base view class
+
 ```
 from django.contrib.auth.decorators import user_passes_test
 from django.utils.decorators import method_decorator
@@ -156,7 +155,8 @@ class RangerMixin(object):
         return super(RangerMixin, self).dispatch(*args, **kwargs)
 ```
 
-use the base view class
+use the base view class, just add "RangerMixin" to the first parameter of the view constructor
+
 ```
 class PackageViewSet(RangerMixin, viewsets.ModelViewSet):
 ```
