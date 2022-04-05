@@ -65,7 +65,7 @@ except Exception as e:
 
 
 ## Config Logging in Django Application
-only file to change is: settings.py
+only file needs to change is: settings.py
 
 add import for the BioConnect logging handler 
 
@@ -121,7 +121,6 @@ for Google Cloud Storage,
 ```
 from bioconnect_lib.ranger.ranger_gcs import RangerGCSAuthorizer
 
-
 authorizer = RangerGCSAuthorizer()
 user_id = 'admin'
 project = 'jax-cube-prd-ctrl-01'
@@ -148,14 +147,13 @@ from django.contrib.auth.decorators import user_passes_test
 from django.utils.decorators import method_decorator
 from bioconnect_lib.ranger.ranger_gcs import ranger_gcs_is_access_allowed
 
-
 class RangerMixin(object):
     @method_decorator(user_passes_test(ranger_gcs_is_access_allowed))
     def dispatch(self, *args, **kwargs):
         return super(RangerMixin, self).dispatch(*args, **kwargs)
 ```
 
-use the base view class, just add "RangerMixin" to the first parameter of the view constructor
+to use, just add "RangerMixin" to the first parameter of the view constructor, for example:
 
 ```
 class PackageViewSet(RangerMixin, viewsets.ModelViewSet):
