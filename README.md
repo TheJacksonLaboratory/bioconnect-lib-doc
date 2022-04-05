@@ -1,7 +1,7 @@
 # BioConnect Library
 BioConnect library to use Apache Ranger Authorization and Logging
 
-## View Logging
+## View BioConnect Logging
 Open url: [http://34.148.227.60:5601](http://34.148.227.60:5601)
 
 click on "Discover" icon on top left
@@ -12,13 +12,13 @@ click on "Discover" icon on top left
 
 Make sure the correct index to view,  click on "change" to change index
 <p align="center">
-  <img src="https://raw.githubusercontent.com/TheJacksonLaboratory/bioconnect-lib-doc/main/img/kibana_view_log.png" alt="Select Index" width="315" height="271"/>
+  <img src="https://raw.githubusercontent.com/TheJacksonLaboratory/bioconnect-lib-doc/main/img/kibana_view_select_index.png" alt="Select Index" width="315" height="271"/>
 </p>
 
 
 Make sure the correct index to view,  click on "change" to change index
 <p align="center">
-  <img src="https://raw.githubusercontent.com/TheJacksonLaboratory/bioconnect-lib-doc/main/img/kibana_view_log.png" alt="Select Index" width="315" height="271"/>
+  <img src="https://raw.githubusercontent.com/TheJacksonLaboratory/bioconnect-lib-doc/main/img/kibana_view_select_timeframe.png" alt="Select Index" width="315" height="271"/>
 </p>
 
 If index is not list, a new index pattern need to be created by clicking on "Management" icon to left bottom
@@ -33,7 +33,66 @@ pip install -i https://test.pypi.org/simple/ bioconnect
 more info see
 [https://test.pypi.org/project/bioconnect](https://test.pypi.org/project/bioconnect)
 
-## 
+
+## Config Logging in Django Application
+only file to change is: settings.py
+add import for the BioConnect logging handler 
+
+```
+from bioconnect_lib.log.log_handler import BioconnectLogHandler
+```
+
+add logging config to
+
+```
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'simple': {
+            'format': '{levelname} {asctime} {name}: {message}',
+            'style': '{',
+        }
+    },    
+    'handlers': {
+        'bioconnect-handler': {
+            'class': 'bioconnect_lib.log.log_handler.BioconnectLogHandler',
+            'formatter': 'simple'
+        }
+    },
+    'loggers': {
+        '': {
+            'handlers': ['bioconnect-handler'], 
+            'level': 'INFO',
+            'propagate': False,
+        },
+    },
+}
+```
+
+use the logging as usual
+
+```
+logger = logging.getLogger(__name__)
+
+logger.info("logging info")
+# add more info from Django request
+logger.info("logging info with more tag info", extra=BioconnectLogHandler.djang_request_to_log_extra(request))
+```
+
+
+## Config Logging in Python Application
+
+```
+import logging
+from bioconnect_lib.log.log_handler import BioconnectLogHandler
+
+
+logging.basicConfig(level="INFO", handlers=[BioconnectLogHandler()])
+
+```
+
+
 
 ## Use BioConnect Ranger Authorization
 ```
