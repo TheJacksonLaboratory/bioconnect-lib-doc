@@ -2,23 +2,28 @@
 BioConnect library to use Apache Ranger Authorization and Logging
 
 ## View Logging
-open url: [http://34.148.227.60:5601](http://34.148.227.60:5601)
+Open url: [http://34.148.227.60:5601](http://34.148.227.60:5601)
 
 click on "Discover" icon on top left
 <p align="center">
-  <img src="./img/kibana_view_log.png" alt="View Logging"/>
+  <img src="https://raw.githubusercontent.com/TheJacksonLaboratory/bioconnect-lib-doc/main/img/kibana_view_log.png" alt="View Logging" width="315" height="271"/>
 </p>
 
 
 Make sure the correct index to view,  click on "change" to change index
 <p align="center">
-  <img src="./img/kibana_view_select_index.png" alt="Select Index"/>
+  <img src="https://raw.githubusercontent.com/TheJacksonLaboratory/bioconnect-lib-doc/main/img/kibana_view_log.png" alt="Select Index" width="315" height="271"/>
 </p>
 
 
 Make sure the correct index to view,  click on "change" to change index
 <p align="center">
-  <img src="./img/kibana_view_select_index.png" alt="Select Index"/>
+  <img src="https://raw.githubusercontent.com/TheJacksonLaboratory/bioconnect-lib-doc/main/img/kibana_view_log.png" alt="Select Index" width="315" height="271"/>
+</p>
+
+If index is not list, a new index pattern need to be created by clicking on "Management" icon to left bottom
+<p align="center">
+  <img src="https://raw.githubusercontent.com/TheJacksonLaboratory/bioconnect-lib-doc/main/img/kibana_create_index_pattern.png" alt="create Index Pattern" width="315" height="271"/>
 </p>
 
 ## Installation
