@@ -1,29 +1,29 @@
 # BioConnect Library
-BioConnect library to use Apache Ranger Authorization and Logging
+BioConnect library for Logging and Apache Ranger Authorization
 
 ## View BioConnect Logging
 Open url: [http://34.148.227.60:5601](http://34.148.227.60:5601)
 
 click on "Discover" icon on top left
-<p align="center">
+<p>
   <img src="https://raw.githubusercontent.com/TheJacksonLaboratory/bioconnect-lib-doc/main/img/kibana_view_log.png" alt="View Logging" width="315" height="271"/>
 </p>
 
 
 select index to view,  click on "change" to change index
-<p align="center">
+<p>
   <img src="https://raw.githubusercontent.com/TheJacksonLaboratory/bioconnect-lib-doc/main/img/kibana_view_select_index.png" alt="Select Index" width="315" height="271"/>
 </p>
 
 
 Select the time frame, and click on "Sarch" field to filter fields
 
-<p align="center">
+<p>
   <img src="https://raw.githubusercontent.com/TheJacksonLaboratory/bioconnect-lib-doc/main/img/kibana_view_select_timeframe.png" alt="Select Index" width="315" height="271"/>
 </p>
 
 If index is not list, a new index pattern need to be created by clicking on "Management" icon to left bottom
-<p align="center">
+<p>
   <img src="https://raw.githubusercontent.com/TheJacksonLaboratory/bioconnect-lib-doc/main/img/kibana_create_index_pattern.png" alt="create Index Pattern" width="315" height="271"/>
 </p>
 
